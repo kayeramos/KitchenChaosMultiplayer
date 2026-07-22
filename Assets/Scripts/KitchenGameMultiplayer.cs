@@ -48,7 +48,10 @@ public class KitchenGameMultiplayer : NetworkBehaviour {
         if (!playMultiplayer) {
             // Singleplayer
             StartHost();
-            Loader.LoadNetwork(Loader.Scene.GameScene);
+            NetworkManager.Singleton.SceneManager.LoadScene(
+            Loader.Scene.GameScene.ToString(),
+            LoadSceneMode.Single
+);
         }
     }
 

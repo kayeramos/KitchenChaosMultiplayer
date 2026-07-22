@@ -59,7 +59,11 @@ public class StoveCounter : BaseCounter, IHasProgress {
             state = state.Value
         });
 
+        if (!IsServer) return;
+
         if (state.Value == State.Burned || state.Value == State.Idle) {
+            fryingTimer.Value = 0f;
+            burningTimer.Value = 0f;
             OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs {
                 progressNormalized = 0f
             });
